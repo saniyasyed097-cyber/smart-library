@@ -1,0 +1,230 @@
+/* ==========================================================================
+   Smart Library System - Modern Light Theme Stylesheet
+   Palette:
+   - Background: White (#FFFFFF) & Soft Canvas (#F8FAFC)
+   - Navbar: Navy Blue (#0F172A)
+   - Buttons & Primary: Royal Blue (#2563EB)
+   - Cards & Containers: Light Gray (#F8FAFC / #FFFFFF)
+   - Text: Dark Gray (#1F2937) / Slate (#475569)
+   - Highlights & Accents: Gold (#F59E0B)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --bg-white: #ffffff;
+  --bg-canvas: #f8fafc;
+  --nav-navy: #0f172a;
+  --btn-blue: #2563eb;
+  --btn-blue-hover: #1d4ed8;
+  --text-dark: #1f2937;
+  --text-slate: #475569;
+  --accent-gold: #f59e0b;
+  --border-subtle: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Navbar */
+.navbar-navy {
+  background-color: var(--nav-navy);
+  color: #ffffff;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--btn-blue);
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-blue-hover);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-gold {
+  background-color: var(--accent-gold);
+  color: #ffffff;
+}
+
+.btn-gold:hover {
+  background-color: #d97706;
+}
+
+/* Cards */
+.card-light {
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.card-light:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
+.card-white {
+  background-color: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+}
+
+/* 2D Floor Plan SVG Interactive Styling */
+.rack-box-light {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  fill: #ffffff;
+  stroke: #cbd5e1;
+}
+
+.rack-box-light:hover {
+  fill: #eff6ff !important;
+  stroke: #2563eb !important;
+  filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.2));
+}
+
+.target-rack-light {
+  animation: rackPulseLight 2s infinite ease-in-out;
+  fill: #dbeafe !important;
+  stroke: #2563eb !important;
+}
+
+@keyframes rackPulseLight {
+  0%, 100% {
+    stroke-width: 3px;
+    stroke: #2563eb;
+    filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.5));
+  }
+  50% {
+    stroke-width: 4.5px;
+    stroke: #1d4ed8;
+    filter: drop-shadow(0 0 16px rgba(37, 99, 235, 0.8));
+  }
+}
+
+.nav-path-light {
+  filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.6));
+}
+
+/* 5-Shelf Elevation Styles */
+.shelf-level-light {
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.active-shelf-light {
+  border: 2px solid #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.15);
+}
+
+.book-spine-light {
+  height: 85%;
+  border-radius: 3px 3px 0 0;
+  box-shadow: inset 2px 0 3px rgba(255,255,255,0.4), inset -2px 0 3px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.book-spine-light:hover {
+  transform: translateY(-6px) scale(1.04);
+  filter: brightness(1.15);
+  z-index: 10;
+}
+
+.highlighted-spine-light {
+  height: 98% !important;
+  border: 2px solid #2563eb;
+  box-shadow: 0 0 14px rgba(37, 99, 235, 0.7), inset 0 0 6px rgba(255,255,255,0.8) !important;
+  animation: spineGlowLight 1.5s infinite alternate;
+}
+
+@keyframes spineGlowLight {
+  0% { transform: translateY(-3px); box-shadow: 0 0 8px #2563eb; }
+  100% { transform: translateY(-7px); box-shadow: 0 0 18px #3b82f6; }
+}
+
+.spine-marker-light {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Split-Screen Login Layout */
+.login-split-container {
+  min-height: 100vh;
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .login-split-container {
+    flex-direction: column;
+  }
+}
+
+/* Print Styles for Library Study Pass */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #study-pass-modal, #study-pass-modal * {
+    visibility: visible;
+  }
+  #study-pass-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: white !important;
+  }
+}

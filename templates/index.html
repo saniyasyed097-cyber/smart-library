@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Library Book Locator & Management System</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandNavy: '#0F172A',
+            brandBlue: '#2563EB',
+            brandGold: '#F59E0B',
+            brandCanvas: '#F8FAFC',
+            brandDark: '#1F2937'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body class="bg-white text-slate-800 antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+
+  <!-- ROOT MOUNT POINT FOR APP -->
+  <div id="app-root" class="w-full flex-1 flex flex-col">
+    <!-- Populated by static/js/app.js (Split Login OR Dashboard) -->
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL 1: INTERACTIVE 2D FLOOR LOCATOR & 5-SHELF CABINET ELEVATION         -->
+  <!-- ========================================================================= -->
+  <div id="locator-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white border border-slate-200 rounded-3xl max-w-5xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+        <div>
+          <span class="text-[11px] font-extrabold text-blue-600 uppercase tracking-widest block mb-0.5">
+            🔍 Physical Book Navigation Blueprint
+          </span>
+          <div id="locator-modal-title" class="text-lg font-bold text-slate-900">
+            <!-- Book Title -->
+          </div>
+        </div>
+        <button onclick="document.getElementById('locator-modal').classList.add('hidden')" 
+                class="w-9 h-9 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-600 hover:text-slate-900 flex items-center justify-center font-bold">
+          ✕
+        </button>
+      </div>
+
+      <!-- Location Badge Ticker -->
+      <div class="px-5 py-3 bg-white border-b border-slate-100 flex items-center justify-between" id="locator-book-badge">
+        <!-- Floor, Rack, Shelf badges -->
+      </div>
+
+      <!-- Modal Body (2D Map + 5-Shelf Elevation Grid) -->
+      <div class="p-6 overflow-y-auto space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 2D Floor Plan Canvas -->
+          <div class="lg:col-span-7 bg-slate-50 rounded-2xl p-4 border border-slate-200 flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-bold text-xs text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                <span>🗺️ Interactive 2D Floor Plan</span>
+              </h4>
+              <span class="text-[11px] text-blue-600 font-bold font-mono">Pulsing blue box shows rack</span>
+            </div>
+            
+            <div id="floor-map-canvas" class="w-full flex items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-white">
+              <!-- SVG Floor Plan Injected Here -->
+            </div>
+          </div>
+
+          <!-- 5-Shelf Cabinet Elevation View -->
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            <div id="shelf-elevation-canvas">
+              <!-- Shelves 1 to 5 Injected Here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Guide -->
+        <div id="locator-directions">
+          <!-- Step directions Injected Here -->
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+        <span class="text-xs text-slate-500 font-medium">Tips: Take the elevator for floors 1, 2, and 3</span>
+        <button onclick="document.getElementById('locator-modal').classList.add('hidden')" 
+                class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow-sm">
+          Close Navigator
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL 2: DIGITAL STUDY ENTRY PASS (Direct Entry)                          -->
+  <!-- ========================================================================= -->
+  <div id="study-pass-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div id="study-pass-content" class="max-w-md w-full">
+      <!-- Injected by study handler in app.js -->
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL 3: ADMIN ADD NEW BOOK FORM                                          -->
+  <!-- ========================================================================= -->
+  <div id="add-book-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white border border-slate-200 rounded-3xl max-w-xl w-full p-6 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl p-2 bg-blue-50 text-blue-600 rounded-2xl border border-blue-100">➕</span>
+          <div>
+            <h3 class="text-lg font-bold text-slate-900">Add New Book to Catalog</h3>
+            <p class="text-xs text-slate-500">Assign floor, rack (1-100), shelf (1-5), and copies</p>
+          </div>
+        </div>
+        <button onclick="document.getElementById('add-book-modal').classList.add('hidden')" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg">✕</button>
+      </div>
+
+      <form id="add-book-form" onsubmit="window.app.saveNewBookFromForm(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-700 font-bold mb-1">Book Title *</label>
+          <input type="text" id="new-book-title" required placeholder="e.g. Python Programming" 
+                 class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-2.5 focus:border-blue-600 focus:bg-white focus:outline-none" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-700 font-bold mb-1">Author Name *</label>
+            <input type="text" id="new-book-author" required placeholder="e.g. Reema Thareja" 
+                   class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-2.5 focus:border-blue-600 focus:bg-white focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-slate-700 font-bold mb-1">Category *</label>
+            <select id="new-book-category" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-2.5 focus:border-blue-600 focus:bg-white focus:outline-none">
+              <option value="1">1. Programming Books (First Floor)</option>
+              <option value="2">2. Mathematics (First Floor)</option>
+              <option value="3">3. Engineering (First Floor)</option>
+              <option value="4">4. General Knowledge (GK) (Ground Floor)</option>
+              <option value="5">5. Magazines (Ground Floor)</option>
+              <option value="6">6. Science (Second Floor)</option>
+              <option value="7">7. Commerce (Second Floor)</option>
+              <option value="8">8. Medical (Second Floor)</option>
+              <option value="9">9. English Books (Third Floor)</option>
+              <option value="10">10. Story Books (Third Floor)</option>
+              <option value="11">11. History (Third Floor)</option>
+              <option value="12">12. Indian Polity (Third Floor)</option>
+              <option value="13">13. Competitive Exams (Third Floor)</option>
+              <option value="14">14. Novels (Third Floor)</option>
+              <option value="15">15. Aptitude (Third Floor)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-700 font-bold mb-1">Specific Subject / Subcategory *</label>
+            <input type="text" id="new-book-subject" required placeholder="e.g. Python, Calculus, or Anatomy" 
+                   class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-2.5 focus:border-blue-600 focus:bg-white focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-slate-700 font-bold mb-1">Floor Level *</label>
+            <select id="new-book-floor" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-2.5 focus:border-blue-600 focus:bg-white focus:outline-none">
+              <option value="Ground Floor">Ground Floor</option>
+              <option value="First Floor" selected>First Floor</option>
+              <option value="Second Floor">Second Floor</option>
+              <option value="Third Floor">Third Floor</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-slate-700 font-bold mb-1">Rack # (1-100) *</label>
+            <input type="number" id="new-book-rack" min="1" max="100" value="16" required 
+                   class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-2.5 focus:border-blue-600 focus:bg-white focus:outline-none font-bold" />
+          </div>
+          <div>
+            <label class="block text-slate-700 font-bold mb-1">Shelf (1 to 5) *</label>
+            <select id="new-book-shelf" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-2.5 focus:border-blue-600 focus:bg-white focus:outline-none">
+              <option value="Shelf 1">Shelf 1 (Top Level)</option>
+              <option value="Shelf 2">Shelf 2 (Upper-Mid)</option>
+              <option value="Shelf 3" selected>Shelf 3 (Eye Level)</option>
+              <option value="Shelf 4">Shelf 4 (Lower-Mid)</option>
+              <option value="Shelf 5">Shelf 5 (Bottom Level)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-700 font-bold mb-1">Total Copies *</label>
+            <input type="number" id="new-book-copies" min="1" max="50" value="5" required 
+                   class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-2.5 focus:border-blue-600 focus:bg-white focus:outline-none font-bold" />
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex justify-end gap-3">
+          <button type="button" onclick="document.getElementById('add-book-modal').classList.add('hidden')" 
+                  class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold">
+            Cancel
+          </button>
+          <button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-md shadow-blue-600/25">
+            Save Book to Database
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 4: RACK DETAILS DIRECTORY -->
+  <div id="rack-detail-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div id="rack-detail-content" class="max-w-lg w-full">
+      <!-- Injected by onRackClick -->
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm"></div>
+
+  <!-- SCRIPTS -->
+  <script src="{{ url_for('static', filename='js/locator.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
