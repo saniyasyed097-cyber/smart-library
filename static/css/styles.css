@@ -1,15 +1,16 @@
 /* ==========================================================================
-   Smart Library System - Modern Light Theme Stylesheet
+   Smart Library Book Locator & Management System
+   Vignan's Foundation for Science, Technology & Research (Deemed to be University)
+   Department of Advanced Computer Science and Engineering
    Palette:
-   - Background: White (#FFFFFF) & Soft Canvas (#F8FAFC)
-   - Navbar: Navy Blue (#0F172A)
-   - Buttons & Primary: Royal Blue (#2563EB)
-   - Cards & Containers: Light Gray (#F8FAFC / #FFFFFF)
-   - Text: Dark Gray (#1F2937) / Slate (#475569)
-   - Highlights & Accents: Gold (#F59E0B)
+   - Primary Institutional Navy: #0F172A
+   - Academic Royal Blue: #1E40AF / #2563EB
+   - Vignan Accent Quad: Amber (#F59E0B), Green (#10B981), Red (#EF4444), Blue (#3B82F6)
+   - Background: Pure White (#FFFFFF) & Ultra-soft Slate (#F8FAFC)
+   - Borders: Subtle Slate (#E2E8F0)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -17,12 +18,17 @@
   --bg-white: #ffffff;
   --bg-canvas: #f8fafc;
   --nav-navy: #0f172a;
+  --nav-darker: #090e1a;
   --btn-blue: #2563eb;
   --btn-blue-hover: #1d4ed8;
-  --text-dark: #1f2937;
+  --text-dark: #0f172a;
   --text-slate: #475569;
-  --accent-gold: #f59e0b;
   --border-subtle: #e2e8f0;
+  
+  --vignan-amber: #f59e0b;
+  --vignan-green: #10b981;
+  --vignan-red: #ef4444;
+  --vignan-blue: #3b82f6;
 }
 
 * {
@@ -34,7 +40,7 @@
 }
 
 body {
-  background-color: var(--bg-white);
+  background-color: var(--bg-canvas);
   color: var(--text-dark);
   min-height: 100vh;
   overflow-x: hidden;
@@ -42,48 +48,36 @@ body {
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
-
 ::-webkit-scrollbar-track {
   background: #f1f5f9;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
+/* Institutional 4-Color Accent Stripe */
+.vignan-stripe {
+  display: flex;
+  height: 4px;
+  width: 100%;
+}
+.vignan-stripe-amber { background: var(--vignan-amber); flex: 1; }
+.vignan-stripe-green { background: var(--vignan-green); flex: 1; }
+.vignan-stripe-red   { background: var(--vignan-red);   flex: 1; }
+.vignan-stripe-blue  { background: var(--vignan-blue);  flex: 1; }
+
 /* Navbar */
 .navbar-navy {
-  background-color: var(--nav-navy);
+  background: linear-gradient(180deg, #0f172a 0%, #090e1a 100%);
   color: #ffffff;
-}
-
-/* Buttons */
-.btn-primary {
-  background-color: var(--btn-blue);
-  color: #ffffff;
-  transition: all 0.2s ease-in-out;
-}
-
-.btn-primary:hover {
-  background-color: var(--btn-blue-hover);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-}
-
-.btn-gold {
-  background-color: var(--accent-gold);
-  color: #ffffff;
-}
-
-.btn-gold:hover {
-  background-color: #d97706;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Cards */
@@ -91,18 +85,22 @@ body {
   background-color: var(--bg-canvas);
   border: 1px solid var(--border-subtle);
   border-radius: 1.25rem;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .card-light:hover {
   border-color: #93c5fd;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
 }
 
 .card-white {
   background-color: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-white:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.07);
 }
 
 /* 2D Floor Plan SVG Interactive Styling */
@@ -112,11 +110,10 @@ body {
   fill: #ffffff;
   stroke: #cbd5e1;
 }
-
 .rack-box-light:hover {
   fill: #eff6ff !important;
   stroke: #2563eb !important;
-  filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.2));
+  filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.25));
 }
 
 .target-rack-light {
@@ -127,14 +124,14 @@ body {
 
 @keyframes rackPulseLight {
   0%, 100% {
-    stroke-width: 3px;
+    stroke-width: 3.5px;
     stroke: #2563eb;
-    filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.5));
+    filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.6));
   }
   50% {
-    stroke-width: 4.5px;
+    stroke-width: 5px;
     stroke: #1d4ed8;
-    filter: drop-shadow(0 0 16px rgba(37, 99, 235, 0.8));
+    filter: drop-shadow(0 0 18px rgba(37, 99, 235, 0.9));
   }
 }
 
@@ -144,17 +141,16 @@ body {
 
 /* 5-Shelf Elevation Styles */
 .shelf-level-light {
-  border-radius: 10px;
+  border-radius: 12px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   overflow: hidden;
   transition: all 0.2s ease;
 }
-
 .active-shelf-light {
   border: 2px solid #2563eb;
   background: #eff6ff;
-  box-shadow: 0 0 16px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.18);
 }
 
 .book-spine-light {
@@ -165,7 +161,6 @@ body {
   position: relative;
   cursor: pointer;
 }
-
 .book-spine-light:hover {
   transform: translateY(-6px) scale(1.04);
   filter: brightness(1.15);
@@ -193,10 +188,10 @@ body {
   color: #ffffff;
   font-size: 8px;
   font-weight: 800;
-  padding: 1px 5px;
+  padding: 2px 6px;
   border-radius: 4px;
   white-space: nowrap;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
 /* Split-Screen Login Layout */
@@ -205,7 +200,7 @@ body {
   display: flex;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .login-split-container {
     flex-direction: column;
   }

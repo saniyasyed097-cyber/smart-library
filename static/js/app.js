@@ -132,90 +132,154 @@ class SmartLibraryApp {
   }
 
   // =========================================================================
-  // 1. SPLIT-SCREEN LOGIN PAGE
+  // 1. SPLIT-SCREEN LOGIN PAGE (Institutional Vignan University Design)
   // =========================================================================
   renderSplitLogin(container) {
     container.innerHTML = `
-      <div class="login-split-container w-full min-h-screen bg-white flex flex-col lg:flex-row">
+      <div class="login-split-container w-full min-h-screen bg-slate-900 flex flex-col lg:flex-row">
         
-        <!-- LEFT SIDE: Branding, Graphics & Welcome Message -->
-        <div class="lg:w-1/2 bg-slate-900 text-white p-8 lg:p-16 flex flex-col justify-between relative overflow-hidden">
+        <!-- LEFT SIDE: Institutional University Branding & Presented By Team -->
+        <div class="lg:w-7/12 bg-slate-950 text-white p-8 lg:p-14 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800">
           <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div class="absolute bottom-0 left-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-          <!-- Top Brand -->
-          <div class="flex items-center gap-3 z-10">
-            <div class="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-2xl shadow-lg shadow-blue-500/30">
-              🏛️
+          <!-- Top University Brand Header -->
+          <div class="z-10">
+            <div class="flex items-center gap-3.5 mb-3">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-700 to-indigo-950 flex items-center justify-center text-2xl shadow-xl border border-blue-500/30">
+                🏛️
+              </div>
+              <div>
+                <h2 class="text-xs sm:text-sm font-black tracking-wider text-blue-400 uppercase">
+                  Vignan's Foundation for Science, Technology & Research
+                </h2>
+                <p class="text-[11px] text-slate-300 font-semibold tracking-wide">
+                  (Deemed to be University) • Department of Advanced Computer Science and Engineering
+                </p>
+              </div>
             </div>
-            <div>
-              <h2 class="text-xl font-black tracking-tight">SMART LIBRARY</h2>
-              <p class="text-xs text-blue-400 font-medium tracking-wide">Campus Book Locator System</p>
+
+            <!-- Signature 4-Color Accent Stripe -->
+            <div class="vignan-stripe my-3 rounded-full overflow-hidden">
+              <div class="vignan-stripe-amber"></div>
+              <div class="vignan-stripe-green"></div>
+              <div class="vignan-stripe-red"></div>
+              <div class="vignan-stripe-blue"></div>
             </div>
           </div>
 
-          <!-- Middle Hero Text & Illustration -->
-          <div class="my-10 z-10 max-w-lg">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950 border border-blue-800 text-blue-300 text-xs font-semibold mb-4">
-              <span>📍 Exact Book Navigation</span>
+          <!-- Middle Hero Section -->
+          <div class="my-6 z-10 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/80 border border-blue-800/80 text-blue-300 text-[11px] font-semibold mb-3">
+              <span>📍 Physical Book Navigation Blueprint</span>
               <span>•</span>
               <span>4 Floors & Racks 1-100</span>
             </div>
 
-            <h1 class="text-3xl lg:text-4xl font-extrabold leading-tight text-white">
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-white tracking-tight">
               Smart Library Book Locator & Management System
             </h1>
 
-            <p class="text-sm text-slate-300 mt-4 leading-relaxed">
-              Quickly discover and locate books inside the library without manual searching. Get real-time Floor Number, Rack Number, Shelf Number, and Availability Status instantly.
+            <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+              An institutional full-stack platform for instant book discovery, automated floor & rack navigation, and digital loan rule enforcement across Ground, 1st, 2nd, and 3rd floors.
             </p>
 
+            <!-- PRESENTED BY: STUDENT TEAM SHOWCASE -->
+            <div class="mt-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+              <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-800">
+                <span class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                  <span>🎓</span> Presented BY:
+                </span>
+                <span class="text-[10px] text-slate-400 font-mono">B.Tech ACSE • 2026</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-blue-500/50 flex items-center justify-between transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600/30 border border-blue-500/40 text-blue-300 flex items-center justify-center font-black text-xs">SS</span>
+                    <div>
+                      <h4 class="font-bold text-xs text-white">Syed Shafiulla</h4>
+                      <p class="text-[10px] text-slate-400">Student Presenter</p>
+                    </div>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-md bg-blue-950 text-blue-300 text-[10px] font-mono font-bold border border-blue-800">241FA18252</span>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-indigo-500/50 flex items-center justify-between transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-8 h-8 rounded-lg bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 flex items-center justify-center font-black text-xs">SS</span>
+                    <div>
+                      <h4 class="font-bold text-xs text-white">Syad Saniya</h4>
+                      <p class="text-[10px] text-slate-400">Student Presenter</p>
+                    </div>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-md bg-indigo-950 text-indigo-300 text-[10px] font-mono font-bold border border-indigo-800">241FA18256</span>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 flex items-center justify-between transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-8 h-8 rounded-lg bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 flex items-center justify-center font-black text-xs">BT</span>
+                    <div>
+                      <h4 class="font-bold text-xs text-white">Balaji Thilak Babu</h4>
+                      <p class="text-[10px] text-slate-400">Student Presenter</p>
+                    </div>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-md bg-emerald-950 text-emerald-300 text-[10px] font-mono font-bold border border-emerald-800">241FA18194</span>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-amber-500/50 flex items-center justify-between transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-8 h-8 rounded-lg bg-amber-600/30 border border-amber-500/40 text-amber-300 flex items-center justify-center font-black text-xs">PA</span>
+                    <div>
+                      <h4 class="font-bold text-xs text-white">Pavan Aditya</h4>
+                      <p class="text-[10px] text-slate-400">Student Presenter</p>
+                    </div>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-md bg-amber-950 text-amber-300 text-[10px] font-mono font-bold border border-amber-800">241FA18340</span>
+                </div>
+              </div>
+            </div>
+
             <!-- Features Grid -->
-            <div class="grid grid-cols-2 gap-3 mt-8 text-xs text-slate-200">
-              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-800/80 border border-slate-700">
-                <span class="text-lg">👨‍🎓</span>
-                <div>
-                  <b class="text-white block">Student Access</b>
-                  <span class="text-slate-400">14 Days Loan Limit</span>
-                </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-5 text-xs text-slate-200">
+              <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span class="text-base block mb-1">🗺️</span>
+                <b class="text-white block text-[11px]">2D Floor Maps</b>
+                <span class="text-[10px] text-slate-400">Racks 1-100</span>
               </div>
-              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-800/80 border border-slate-700">
-                <span class="text-lg">👨‍🏫</span>
-                <div>
-                  <b class="text-white block">Faculty Access</b>
-                  <span class="text-slate-400">30 Days Loan Limit</span>
-                </div>
+              <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span class="text-base block mb-1">📚</span>
+                <b class="text-white block text-[11px]">5-Tier Shelf</b>
+                <span class="text-[10px] text-slate-400">Elevation Blueprint</span>
               </div>
-              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-800/80 border border-slate-700">
-                <span class="text-lg">🗺️</span>
-                <div>
-                  <b class="text-white block">Interactive Maps</b>
-                  <span class="text-slate-400">Floor & Shelf Elevation</span>
-                </div>
+              <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span class="text-base block mb-1">👨‍🎓</span>
+                <b class="text-white block text-[11px]">Student Rules</b>
+                <span class="text-[10px] text-slate-400">3 Books / 14 Days</span>
               </div>
-              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-800/80 border border-slate-700">
-                <span class="text-lg">🪑</span>
-                <div>
-                  <b class="text-white block">Study Entry</b>
-                  <span class="text-slate-400">Direct Free Seating</span>
-                </div>
+              <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span class="text-base block mb-1">👨‍🏫</span>
+                <b class="text-white block text-[11px]">Faculty Rules</b>
+                <span class="text-[10px] text-slate-400">10 Books / 30 Days</span>
               </div>
             </div>
           </div>
 
-          <!-- Bottom Quote -->
-          <div class="z-10 text-xs text-slate-400 pt-6 border-t border-slate-800">
-            © 2026 Smart Library System. Python (Flask) + MySQL Full-Stack Web Application.
+          <!-- Bottom Footer -->
+          <div class="z-10 text-[11px] text-slate-400 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2">
+            <span>© 2026 Vignan's Foundation for Science, Technology & Research</span>
+            <span class="font-mono text-blue-400 font-semibold">Python (Flask) + MySQL Engine</span>
           </div>
         </div>
 
         <!-- RIGHT SIDE: Modern Clean Login Form Card -->
-        <div class="lg:w-1/2 bg-slate-50 p-8 lg:p-16 flex items-center justify-center">
-          <div class="max-w-md w-full bg-white p-8 rounded-3xl border border-slate-200 shadow-xl">
+        <div class="lg:w-5/12 bg-slate-100 p-6 sm:p-10 lg:p-14 flex items-center justify-center">
+          <div class="max-w-md w-full bg-white p-7 sm:p-9 rounded-3xl border border-slate-200 shadow-2xl">
             
-            <div class="mb-6">
-              <h3 class="text-2xl font-black text-slate-900">Sign In to Your Account</h3>
-              <p class="text-xs text-slate-500 mt-1">Select your user role and enter your institutional ID card number.</p>
+            <div class="mb-5">
+              <span class="text-[10px] font-black uppercase tracking-wider text-blue-600 block mb-1">Institutional Portal</span>
+              <h3 class="text-2xl font-black text-slate-900">Sign In to Library</h3>
+              <p class="text-xs text-slate-500 mt-1">Select your role and enter your institutional ID number.</p>
             </div>
 
             <!-- Role Selector Tabs -->
@@ -239,32 +303,32 @@ class SmartLibraryApp {
               <input type="hidden" id="login-selected-role" value="Student" />
 
               <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                   Your Full Name
                 </label>
                 <div class="relative">
                   <input type="text" id="login-name-input" 
-                         placeholder="Enter your name (e.g. Syed)" 
+                         placeholder="Enter your name (e.g. Syad Saniya)" 
                          class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl px-4 py-2.5 text-xs lg:text-sm font-semibold focus:border-blue-600 focus:bg-white focus:outline-none transition-all" />
                   <span class="absolute right-3.5 top-2.5 text-slate-400 text-sm">👤</span>
                 </div>
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" id="login-id-label">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" id="login-id-label">
                   Student Roll Number (241FA18001 - 241FA18700)
                 </label>
                 <div class="relative">
                   <input type="text" id="login-card-input" required 
-                         placeholder="e.g. 241FA18001" 
-                         value="241FA18001"
+                         placeholder="e.g. 241FA18256" 
+                         value="241FA18256"
                          class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl px-4 py-2.5 text-xs lg:text-sm font-semibold focus:border-blue-600 focus:bg-white focus:outline-none transition-all uppercase" />
                   <span class="absolute right-3.5 top-2.5 text-slate-400 text-sm">💳</span>
                 </div>
               </div>
 
               <div id="login-password-group" class="hidden">
-                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                   Password
                 </label>
                 <input type="password" id="login-password-input" 
@@ -279,26 +343,44 @@ class SmartLibraryApp {
               </button>
             </form>
 
-            <!-- 1-Click Quick Demo Accounts -->
+            <!-- 1-Click Quick Demo Accounts for Team Members -->
             <div class="mt-5 pt-4 border-t border-slate-100">
-              <div class="flex items-center justify-between mb-2.5">
-                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                  Quick 1-Click Demo Profiles:
-                </span>
-                <span class="text-[10px] text-blue-600 font-semibold font-mono">Roll: 241FA18001-700 | Faculty: 1001-2001</span>
+              <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2">
+                1-Click Student Presenter Profiles:
+              </span>
+              <div class="grid grid-cols-2 gap-2 text-xs mb-3">
+                <button onclick="window.app.quickLoginDemo('241FA18256', 'Student', 'Syad Saniya')" 
+                        class="p-2 rounded-xl bg-slate-50 hover:bg-blue-50 hover:border-blue-300 border border-slate-200 text-left font-semibold text-slate-800 transition-all">
+                  <div class="text-[11px] font-bold text-blue-900 truncate">👩‍🎓 Syad Saniya</div>
+                  <span class="text-[10px] text-slate-500 font-mono">241FA18256</span>
+                </button>
+                <button onclick="window.app.quickLoginDemo('241FA18252', 'Student', 'Syed Shafiulla')" 
+                        class="p-2 rounded-xl bg-slate-50 hover:bg-blue-50 hover:border-blue-300 border border-slate-200 text-left font-semibold text-slate-800 transition-all">
+                  <div class="text-[11px] font-bold text-blue-900 truncate">👨‍🎓 Syed Shafiulla</div>
+                  <span class="text-[10px] text-slate-500 font-mono">241FA18252</span>
+                </button>
+                <button onclick="window.app.quickLoginDemo('241FA18194', 'Student', 'Balaji Thilak Babu')" 
+                        class="p-2 rounded-xl bg-slate-50 hover:bg-blue-50 hover:border-blue-300 border border-slate-200 text-left font-semibold text-slate-800 transition-all">
+                  <div class="text-[11px] font-bold text-blue-900 truncate">👨‍🎓 Balaji Thilak</div>
+                  <span class="text-[10px] text-slate-500 font-mono">241FA18194</span>
+                </button>
+                <button onclick="window.app.quickLoginDemo('241FA18340', 'Student', 'Pavan Aditya')" 
+                        class="p-2 rounded-xl bg-slate-50 hover:bg-blue-50 hover:border-blue-300 border border-slate-200 text-left font-semibold text-slate-800 transition-all">
+                  <div class="text-[11px] font-bold text-blue-900 truncate">👨‍🎓 Pavan Aditya</div>
+                  <span class="text-[10px] text-slate-500 font-mono">241FA18340</span>
+                </button>
               </div>
-              <div class="grid grid-cols-3 gap-2.5 text-center text-xs">
-                <button onclick="window.app.quickLoginDemo('241FA18001', 'Student', '')" 
-                        class="p-2.5 rounded-xl bg-slate-100 hover:bg-blue-50 hover:border-blue-300 border border-slate-200 font-semibold text-slate-700 transition-all">
-                  👨‍🎓 Student<br><span class="text-[10px] text-slate-500 font-mono">241FA18001</span>
+
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <button onclick="window.app.quickLoginDemo('1001', 'Faculty', 'Dr. K. S. Ramanujan')" 
+                        class="p-2 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-left font-semibold text-amber-900 transition-all">
+                  <div class="text-[11px] font-bold">👨‍🏫 Faculty Demo</div>
+                  <span class="text-[10px] text-amber-700 font-mono">ID: 1001 (30 Days)</span>
                 </button>
-                <button onclick="window.app.quickLoginDemo('1001', 'Faculty', '')" 
-                        class="p-2.5 rounded-xl bg-slate-100 hover:bg-amber-50 hover:border-amber-300 border border-slate-200 font-semibold text-slate-700 transition-all">
-                  👨‍🏫 Faculty<br><span class="text-[10px] text-slate-500 font-mono">1001</span>
-                </button>
-                <button onclick="window.app.quickLoginDemo('ADMIN-001', 'Admin', '')" 
-                        class="p-2.5 rounded-xl bg-slate-100 hover:bg-purple-50 hover:border-purple-300 border border-slate-200 font-semibold text-slate-700 transition-all">
-                  🛡️ Admin<br><span class="text-[10px] text-slate-500 font-mono">admin123</span>
+                <button onclick="window.app.quickLoginDemo('ADMIN-001', 'Admin', 'Chief Librarian')" 
+                        class="p-2 rounded-xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-left font-semibold text-purple-900 transition-all">
+                  <div class="text-[11px] font-bold">🛡️ Admin Portal</div>
+                  <span class="text-[10px] text-purple-700 font-mono">admin / admin123</span>
                 </button>
               </div>
             </div>
@@ -329,9 +411,9 @@ class SmartLibraryApp {
     if (role === "Student") {
       tabStudent.className = "flex-1 py-2.5 rounded-xl bg-blue-600 text-white shadow-sm transition-all flex items-center justify-center gap-1.5";
       label.innerText = "Student Roll Number (241FA18001 - 241FA18700)";
-      input.value = "241FA18001";
-      input.placeholder = "e.g. 241FA18001 to 241FA18700";
-      if (nameInput) nameInput.placeholder = "Enter your student name (e.g. Syed)";
+      input.value = "241FA18256";
+      input.placeholder = "e.g. 241FA18256 or 241FA18252";
+      if (nameInput) nameInput.placeholder = "Enter your student name (e.g. Syad Saniya)";
       passGroup.classList.add("hidden");
     } else if (role === "Faculty") {
       tabFaculty.className = "flex-1 py-2.5 rounded-xl bg-amber-500 text-white shadow-sm transition-all flex items-center justify-center gap-1.5";
@@ -496,15 +578,48 @@ class SmartLibraryApp {
     const isAdmin = user.role === "Admin";
 
     container.innerHTML = `
-      <div class="min-h-screen bg-white flex flex-col">
+      <div class="min-h-screen bg-slate-50 flex flex-col">
         
+        <!-- INSTITUTIONAL TOP BAR (Vignan University Identity) -->
+        <div class="bg-slate-950 text-slate-300 px-4 sm:px-6 py-2 text-xs border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2.5">
+            <span class="text-base">🏛️</span>
+            <div>
+              <span class="font-extrabold text-white tracking-wider text-[11px] sm:text-xs">
+                VIGNAN'S FOUNDATION FOR SCIENCE, TECHNOLOGY & RESEARCH
+              </span>
+              <span class="text-blue-400 font-bold ml-1 text-[10px] sm:text-[11px]">(Deemed to be University)</span>
+              <span class="text-slate-500 hidden md:inline mx-1.5">•</span>
+              <span class="text-slate-300 font-medium hidden md:inline text-[11px]">Department of Advanced Computer Science and Engineering</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 text-[11px]">
+            <button onclick="document.getElementById('team-modal').classList.remove('hidden')" 
+                    class="px-3 py-1 rounded-full bg-blue-950 hover:bg-blue-900 text-blue-300 border border-blue-800 font-bold flex items-center gap-1.5 transition-all shadow-sm">
+              <span>👥</span>
+              <span>Presented By: Team (4)</span>
+            </button>
+            <span class="text-emerald-400 flex items-center gap-1 font-semibold text-[10px]">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live System
+            </span>
+          </div>
+        </div>
+
+        <!-- 4-COLOR SIGNATURE ACCENT STRIPE -->
+        <div class="vignan-stripe">
+          <div class="vignan-stripe-amber"></div>
+          <div class="vignan-stripe-green"></div>
+          <div class="vignan-stripe-red"></div>
+          <div class="vignan-stripe-blue"></div>
+        </div>
+
         <!-- NAVY BLUE NAVBAR (#0F172A) -->
         <header class="navbar-navy sticky top-0 z-40 shadow-lg">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
             <!-- Brand -->
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.app.setView('borrow')">
-              <div class="w-11 h-11 rounded-2xl bg-blue-600 flex items-center justify-center text-2xl shadow-md">
+              <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-2xl shadow-md border border-blue-400/30">
                 🏛️
               </div>
               <div>
@@ -519,19 +634,19 @@ class SmartLibraryApp {
             </div>
 
             <!-- Navigation Tabs -->
-            <nav class="hidden md:flex items-center gap-2">
+            <nav class="hidden md:flex items-center gap-1.5">
               <button onclick="window.app.setView('borrow')" 
                       class="px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                         this.currentView === 'borrow' ? 'bg-blue-600 text-white shadow' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                       }">
-                📖 Borrow a Book
+                📖 Catalog & Locator
               </button>
 
               <button onclick="window.app.setView('study')" 
                       class="px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                         this.currentView === 'study' ? 'bg-blue-600 text-white shadow' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                       }">
-                🪑 Study in Library
+                🪑 Study Hall
               </button>
 
               <button onclick="window.app.setView('loans')" 
@@ -539,6 +654,12 @@ class SmartLibraryApp {
                         this.currentView === 'loans' ? 'bg-blue-600 text-white shadow' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                       }">
                 📚 My Loans (${user.active_loans || 0}/${user.max_books || 3})
+              </button>
+
+              <button onclick="document.getElementById('team-modal').classList.remove('hidden')" 
+                      class="px-3.5 py-2 rounded-xl text-xs font-bold text-amber-300 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1">
+                <span>👥</span>
+                <span>Team</span>
               </button>
 
               ${isAdmin ? `
@@ -585,13 +706,43 @@ class SmartLibraryApp {
           <!-- Dynamically populated below -->
         </main>
 
-        <!-- FOOTER -->
-        <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
-          <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p>© 2026 Smart Library Book Locator & Management System. Python (Flask) + MySQL.</p>
-            <div class="flex items-center gap-2 text-[11px]">
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-              <span>4 Floors • Racks 1-100 • Numbered Shelves 1-5</span>
+        <!-- INSTITUTIONAL ACADEMIC FOOTER -->
+        <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 text-xs">
+          <div class="vignan-stripe">
+            <div class="vignan-stripe-amber"></div>
+            <div class="vignan-stripe-green"></div>
+            <div class="vignan-stripe-red"></div>
+            <div class="vignan-stripe-blue"></div>
+          </div>
+
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 flex flex-col md:flex-row items-center justify-between gap-5">
+            <div class="text-center md:text-left">
+              <div class="flex items-center justify-center md:justify-start gap-2 mb-1">
+                <span class="text-base">🏛️</span>
+                <h4 class="font-extrabold text-white text-sm">Smart Library Book Locator & Management System</h4>
+              </div>
+              <p class="text-[11px] text-slate-400">
+                Department of Advanced Computer Science and Engineering • Vignan's Foundation for Science, Technology & Research (Deemed to be University)
+              </p>
+              <p class="text-[10px] text-slate-500 mt-0.5">
+                Vadlamudi, Guntur, Andhra Pradesh, India • 4 Floors • Racks 1-100 • Shelves 1-5
+              </p>
+            </div>
+
+            <div class="text-center md:text-right bg-slate-900/80 p-3 rounded-2xl border border-slate-800">
+              <span class="text-[10px] font-black uppercase tracking-wider text-amber-400 block mb-1">
+                🎓 Presented BY:
+              </span>
+              <p class="text-[11px] text-slate-200 font-semibold space-x-2">
+                <span>241FA18252 - Syed Shafiulla</span>
+                <span class="text-slate-600">•</span>
+                <span>241FA18256 - Syad Saniya</span>
+              </p>
+              <p class="text-[11px] text-slate-200 font-semibold space-x-2 mt-0.5">
+                <span>241FA18194 - Balaji Thilak Babu</span>
+                <span class="text-slate-600">•</span>
+                <span>241FA18340 - Pavan Aditya</span>
+              </p>
             </div>
           </div>
         </footer>
@@ -1476,12 +1627,14 @@ class SmartLibraryApp {
     if (cat && cat.subjects && cat.subjects.length > 0) {
       this.selectedSubject = cat.subjects[0];
     }
+    this.floorFilter = "all";
     this.searchQuery = "";
     this.renderCurrentView();
   }
 
   selectSubject(subjectName) {
     this.selectedSubject = subjectName;
+    this.floorFilter = "all";
     this.searchQuery = "";
     this.renderCurrentView();
   }

@@ -166,6 +166,10 @@ def seed_database():
 
         # 5. USER ACCOUNTS (Students: 241FA18001 to 241FA18700 [14 Days], Faculty: 1001 to 2001 [30 Days], Admin)
         students = [
+            ("241FA18252", "Syed Shafiulla", "Department of Advanced Computer Science and Engineering", "6th Semester", "241fa18252@campus.edu", "+91 98765 43252", 3, 14),
+            ("241FA18256", "Syad Saniya", "Department of Advanced Computer Science and Engineering", "6th Semester", "241fa18256@campus.edu", "+91 98765 43256", 3, 14),
+            ("241FA18194", "Balaji Thilak Babu", "Department of Advanced Computer Science and Engineering", "6th Semester", "241fa18194@campus.edu", "+91 98765 43194", 3, 14),
+            ("241FA18340", "Pavan Aditya", "Department of Advanced Computer Science and Engineering", "6th Semester", "241fa18340@campus.edu", "+91 98765 43340", 3, 14),
             ("241FA18001", "Aarav Sharma", "Computer Science & Engineering", "6th Semester", "241fa18001@campus.edu", "+91 98765 43210", 3, 14),
             ("241FA18002", "Priya Patel", "Electronics & Communication", "4th Semester", "241fa18002@campus.edu", "+91 98765 43211", 3, 14),
             ("241FA18003", "Rohan Mehta", "Mechanical Engineering", "8th Semester", "241fa18003@campus.edu", "+91 98765 43212", 3, 14),
